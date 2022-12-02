@@ -14,7 +14,7 @@ class SaleOrderCustomization(models.Model):
         for rec in self:
             total_margin=0.0
             for invoice in rec.invoice_ids:
-                if(invoice.type=='out_invoice'):
+                if(invoice.move_type=='out_invoice'):
                     total_margin=total_margin+invoice.amount_total
                     _logger.info(str(total_margin))
             rec.invoice_margin=rec.amount_total-total_margin
